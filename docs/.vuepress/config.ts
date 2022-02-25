@@ -39,7 +39,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
       },
       {
         text: 'Mysql',
-        link: '/mysql/',
+        link: '/pages/29c828/',
       },
       {
         text: 'Linux',
@@ -51,7 +51,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
       },
       
     ],
-    sidebarDepth: 1, // 侧边栏显示深度，默认1，最大2（显示到h3标题）
+    sidebarDepth: 0, // 侧边栏显示深度，默认1，最大2（显示到h3标题）
     logo: '/img/logo.jpg', // 导航栏logo
     repo: 'https://github.com/qiumozhou?tab=repositories', // 导航栏右侧生成Github链接
     searchMaxSuggestions: 10, // 搜索结果显示最大数
