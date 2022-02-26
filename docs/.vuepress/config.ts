@@ -29,13 +29,13 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         text: 'Python',
         link: '/pages/05012b/', //目录页链接，此处link是vdoing主题新增的配置项，有二级导航时，可以点击一级导航跳到目录页
       },
-      {
-        text: 'Java',
-        link: '/java/',
-      },
+      // {
+      //   text: 'Java',
+      //   link: '/java/',
+      // },
       {
         text: '前端',
-        link: '/front/',
+        link: '/pages/3dc9eb/',
       },
       {
         text: 'Mysql',
@@ -51,7 +51,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
       },
       
     ],
-    sidebarDepth: 0, // 侧边栏显示深度，默认1，最大2（显示到h3标题）
+    sidebarDepth: 1, // 侧边栏显示深度，默认1，最大2（显示到h3标题）
     logo: '/img/logo.jpg', // 导航栏logo
     repo: 'https://github.com/qiumozhou?tab=repositories', // 导航栏右侧生成Github链接
     searchMaxSuggestions: 10, // 搜索结果显示最大数
@@ -134,7 +134,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 
   // 注入到页面<head>中的标签，格式[tagName, { attrName: attrValue }, innerHTML?]
   head: [
-    ['link', { rel: 'icon', href: '/img/favicon.ico' }], //favicons，资源放在public文件夹
+    ['link', { rel: 'icon', href: '/img/logo.jpg' }], //favicons，资源放在public文件夹
     [
       'meta',
       {
