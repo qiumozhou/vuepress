@@ -4,9 +4,8 @@ date: 2022-02-26 15:49:45
 permalink: /pages/3dc9eb/
 categories:
   - 前端
-  - react
 tags:
-  - 
+  - react
 ---
 ### 01、创建项目
 在命令行执行`npx create-react-app my-app`

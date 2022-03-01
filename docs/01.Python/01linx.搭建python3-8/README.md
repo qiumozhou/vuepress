@@ -8,23 +8,24 @@ tags:
   - Linux环境
 ---
 
-1. 更新软件包列表并安装构建Python所需的软件包：
+### 01、更新软件包列表并安装构建Python所需的软件包：
 
 ```commandline
  sudo apt update
  sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev wget
 ```
 
-2. 使用wget从Python下载页面下载最新版本的源代码，或者访问 https://www.python.org/ 网站下载：
-   `wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tgz`
-   在选写本文时，最新版本是3.8.0。
-   
-3. 下载完成后，解压缩下载的文件：
+### 02、使用wget从Python下载页面下载最新版本的源代码，或者访问 https://www.python.org/ 网站下载：
+`wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tgz`
+在选写本文时，最新版本是3.8.0。
+
+### 03、下载完成后，解压缩下载的文件：
+
 ```commandline
  tar -xf Python-3.8.0.tgz
- ```
-  
-4. 切换到Python源目录并执行configure脚本，该脚本执行许多检查以确保系统上的所有依赖项都存在：
+```
+
+### 04、切换到Python源目录并执行configure脚本，该脚本执行许多检查以确保系统上的所有依赖项都存在：
 
 ```commandline
    cd Python-3.8.0
@@ -32,21 +33,28 @@ tags:
 ```
 
   --enable-optimizations选项通过运行多个测试来优化Python二进制文件，这会使构建过程变慢。
-5. 启动Python 3.8构建过程：
+
+### 05、启动Python 3.8构建过程：
+
 ```commandline
 make -j 8
 ```
-   
+
   为了加快构建时间，请修改-j以使其对应于处理器中的内核数，你可以通过键入nproc查找编号。
-6. 构建过程完成后，输入以下命令安装Python二进制文件：
+
+### 06、构建过程完成后，输入以下命令安装Python二进制文件：
+
 ```commandline
   sudo make altinstall
 ```
 
   不要使用标准的make install，因为它将覆盖默认的系统python3二进制文件。
-7. Python 3.8已安装并准备使用，通过运行以下命令进行验证：
+
+### 07、Python 3.8已安装并准备使用，通过运行以下命令进行验证：
+
 ```commandline
   python3.8 --version
 ```
 
  
+
