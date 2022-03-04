@@ -1,4 +1,5 @@
 import { resolve } from 'path'
+const nav = require('./config/nav.js');
 import { defineConfig4CustomTheme } from 'vuepress/config'
 import { VdoingThemeConfig } from 'vuepress-theme-vdoing/types'
 import dayjs from 'dayjs'
@@ -22,33 +23,35 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
   // 主题配置
   themeConfig: {
     // 导航配置
-    nav: [
-      { text: '首页', link: '/' },
-      {
+    // nav: [
+    //   { text: '首页', link: '/' },
+    //   {
     
-        text: 'Python',
-        link: '/pages/05012b/', //目录页链接，此处link是vdoing主题新增的配置项，有二级导航时，可以点击一级导航跳到目录页
-      },
-      {
-        text: '前端',
-        link: '/pages/3dc9eb/',
-      },
-      {
-        text: 'Mysql',
-        link: '/pages/29c828/',
-      },
-      {
-        text: 'Linux',
-        link: '/pages/c4ffa5/',
-      },
-      {
-        text: 'K8S',
-        link: '/pages/59618f/',
-      },
+    //     text: 'Python',
+    //     link: '/pages/05012b/', //目录页链接，此处link是vdoing主题新增的配置项，有二级导航时，可以点击一级导航跳到目录页
+    //   },
+    //   {
+    //     text: '前端',
+    //     link: '/pages/3dc9eb/',
+    //   },
+    //   {
+    //     text: 'Mysql',
+    //     link: '/pages/29c828/',
+    //   },
+    //   {
+    //     text: 'Linux',
+    //     link: '/pages/c4ffa5/',
+    //   },
+    //   {
+    //     text: 'K8S',
+    //     link: '/pages/59618f/',
+    //   },
       
-    ],
-    sidebar: "auto",
-    sidebarDepth: 0, // 侧边栏显示深度，默认1，最大2（显示到h3标题）
+    // ],
+    nav,
+    sidebar: 'structuring',
+    // sidebar: "auto",
+    sidebarDepth: 2, // 侧边栏显示深度，默认1，最大2（显示到h3标题）
     logo: '/img/logo.jpg', // 导航栏logo
     repo: 'https://github.com/qiumozhou?tab=repositories', // 导航栏右侧生成Github链接
     searchMaxSuggestions: 10, // 搜索结果显示最大数
@@ -86,7 +89,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
     pageButton: true, // 是否显示快捷翻页按钮，默认true
 
     // 侧边栏  'structuring' | { mode: 'structuring', collapsable: Boolean} | 'auto' | <自定义>    温馨提示：目录页数据依赖于结构化的侧边栏数据，如果你不设置为'structuring',将无法使用目录页
-    sidebar: 'structuring',
+    // sidebar: 'structuring',
 
     // 文章默认的作者信息，(可在md文件中单独配置此信息) string | {name: string, link?: string}
     author: {
