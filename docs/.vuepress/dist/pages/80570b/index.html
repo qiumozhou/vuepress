@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ubuntu安装docker-compose | Mr Qiu&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/img/logo.jpg">
+    <meta name="description" content="web前端技术博客,专注web前端学习与总结。JavaScript,js,ES6,TypeScript,vue,React,python,css3,html5,Node,git,github等技术文章。">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown">
+    <meta name="baidu-site-verification" content="7F55weZDDc">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/assets/css/0.styles.4c447bcc.css" as="style"><link rel="preload" href="/assets/js/app.abcf3bdc.js" as="script"><link rel="preload" href="/assets/js/2.39c3b13f.js" as="script"><link rel="preload" href="/assets/js/12.daedc857.js" as="script"><link rel="prefetch" href="/assets/js/10.e8f8cfea.js"><link rel="prefetch" href="/assets/js/11.4163dcdd.js"><link rel="prefetch" href="/assets/js/13.71859518.js"><link rel="prefetch" href="/assets/js/14.d3bc3349.js"><link rel="prefetch" href="/assets/js/15.386abd46.js"><link rel="prefetch" href="/assets/js/16.4da51042.js"><link rel="prefetch" href="/assets/js/17.b51a60b9.js"><link rel="prefetch" href="/assets/js/18.986559fc.js"><link rel="prefetch" href="/assets/js/19.ca8e7e89.js"><link rel="prefetch" href="/assets/js/20.f5b76e3c.js"><link rel="prefetch" href="/assets/js/3.5ff433d3.js"><link rel="prefetch" href="/assets/js/4.1cadcc0d.js"><link rel="prefetch" href="/assets/js/5.5729ed76.js"><link rel="prefetch" href="/assets/js/6.bf1d66c2.js"><link rel="prefetch" href="/assets/js/7.4c977664.js"><link rel="prefetch" href="/assets/js/8.7d5bd4a7.js"><link rel="prefetch" href="/assets/js/9.28e65519.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.4c447bcc.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.jpg" alt="Mr Qiu's blog" class="logo"> <span class="site-name can-hide">Mr Qiu's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/pages/05012b/" class="nav-link">python</a></div><div class="nav-item"><a href="/pages/3dc9eb/" class="nav-link">前端</a></div><div class="nav-item"><a href="/pages/29c828/" class="nav-link">Mysql</a></div><div class="nav-item"><a href="/pages/c4ffa5/" class="nav-link">Linux</a></div><div class="nav-item"><a href="/pages/59618f/" class="nav-link">K8S</a></div> <a href="https://github.com/qiumozhou?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/pages/05012b/" class="nav-link">python</a></div><div class="nav-item"><a href="/pages/3dc9eb/" class="nav-link">前端</a></div><div class="nav-item"><a href="/pages/29c828/" class="nav-link">Mysql</a></div><div class="nav-item"><a href="/pages/c4ffa5/" class="nav-link">Linux</a></div><div class="nav-item"><a href="/pages/59618f/" class="nav-link">K8S</a></div> <a href="https://github.com/qiumozhou?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>文件系统</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Docker</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/08dd02/" class="sidebar-link">ubuntu系统安装Docker</a></li><li><a href="/pages/263a07/" class="sidebar-link">基于docker安装redis</a></li><li><a href="/pages/a47604/" class="sidebar-link">基于docker安装rabbitMQ</a></li><li><a href="/pages/80570b/" aria-current="page" class="active sidebar-link">ubuntu安装docker-compose</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>进程管理</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-0c557b5e><div class="articleInfo" data-v-0c557b5e><ul class="breadcrumbs" data-v-0c557b5e><li data-v-0c557b5e><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-0c557b5e></a></li> <li data-v-0c557b5e><a href="/categories/?category=Linux" title="分类" data-v-0c557b5e>Linux</a></li><li data-v-0c557b5e><a href="/categories/?category=Docker" title="分类" data-v-0c557b5e>Docker</a></li></ul> <div class="info" data-v-0c557b5e><div title="作者" class="author iconfont icon-touxiang" data-v-0c557b5e><a href="https://github.com/qiumozhou/" target="_blank" title="作者" class="beLink" data-v-0c557b5e>qiumozhou</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-0c557b5e><a href="javascript:;" data-v-0c557b5e>2022-03-10</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">ubuntu安装docker-compose<!----></h1>  <div class="theme-vdoing-content content__default"><h3 id="_01、安装docker-compose"><a href="#_01、安装docker-compose" class="header-anchor">#</a> 01、安装docker-compose</h3> <p>执行 <code>sudo apt-get install docker-compose</code></p> <h3 id="_02、编写配置文件"><a href="#_02、编写配置文件" class="header-anchor">#</a> 02、编写配置文件</h3> <p>新建docker-compose.yml文件,粘贴以下内容:</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>version: '3'
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: wordpress
+  wordpress:
+    image: wordpress
+    restart: always
+    volumes:
+      - ./wp_data:/var/www/html
+    ports:
+      - &quot;8080:80&quot;
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: password
+    command:[&quot;bash&quot;,&quot;/test/start_up.sh&quot;]
+    depends_on:
+       - db
+volumes:
+    db_data:
+    wp_data:
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><h3 id="_03、启动docker-compose"><a href="#_03、启动docker-compose" class="header-anchor">#</a> 03、启动docker-compose</h3> <p>在docker-compose.yml路径执行<code>sudo docker-compose up -d</code></p> <h3 id="_04、检查容器"><a href="#_04、检查容器" class="header-anchor">#</a> 04、检查容器</h3> <p>使用ps选项，检查运行的服务：
+<code>sudo docker-compose ps</code> <img src="/assets/img/docker-compose-01.afcf1183.png" alt=""></p></div></div>  <div class="page-edit"><!----> <div class="tags"><a href="/tags/?tag=docker" title="标签">#docker</a></div> <!----></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/a47604/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">基于docker安装rabbitMQ</div></a> <a href="/pages/1054f2/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">ubuntu安装supervisor</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/a47604/" class="prev">基于docker安装rabbitMQ</a></span> <span class="next"><a href="/pages/1054f2/">ubuntu安装supervisor</a>→
+      </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="mailto:15717163552@163.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/qiumozhou/" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2022-2022
+    <span>Mr qiu | <a href="https://github.com/qiumozhou/" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.abcf3bdc.js" defer></script><script src="/assets/js/2.39c3b13f.js" defer></script><script src="/assets/js/12.daedc857.js" defer></script>
+  </body>
+</html>
