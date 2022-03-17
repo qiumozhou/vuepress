@@ -1,0 +1,47 @@
+---
+title: 02、ORM实现upsert操作
+date: 2022-03-17 13:21:01
+permalink: /pages/d8ea6c/
+categories:
+  - Python
+tags:
+  - ORM
+  - upsert
+---
+
+
+### 01、搭建orm模型
+
+```
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
+
+
+class User(Base):
+    __tablename__ = 'student'
+    id = Column(Integer,primary_key=True,autoincrement=True)
+    name = Column(String(50),nullable=False)
+    age = Column(Integer,nullable=False)
+    sex = Column(String(50))
+```
+
+### 02、编写测试代码
+
+```
+
+from sqlalchemy.dialects.mysql import insert
+
+
+data ={"id":5,"name":"test","age":30,"sex":"male"}
+        insert_stmt = insert(User).values(**data)
+
+        on_duplicate_key_stmt = insert_stmt.on_duplicate_key_update(
+            **data
+        )
+
+        # MySQLService.execute_upsert实际上就是session.execute()方法
+        MySQLService.execute_upsert(on_duplicate_key_stmt)
+
+```
