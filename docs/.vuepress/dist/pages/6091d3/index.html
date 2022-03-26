@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>IMAP处理邮件 | Mr Qiu&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/img/logo.jpg">
+    <meta name="description" content="web前端技术博客,专注web前端学习与总结。JavaScript,js,ES6,TypeScript,vue,React,python,css3,html5,Node,git,github等技术文章。">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown">
+    <meta name="baidu-site-verification" content="7F55weZDDc">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/assets/css/0.styles.9b2b34ec.css" as="style"><link rel="preload" href="/assets/js/app.6c83450c.js" as="script"><link rel="preload" href="/assets/js/2.377c5421.js" as="script"><link rel="preload" href="/assets/js/35.c4935256.js" as="script"><link rel="prefetch" href="/assets/js/10.bfd3bcf5.js"><link rel="prefetch" href="/assets/js/11.6f5ff714.js"><link rel="prefetch" href="/assets/js/12.312dd1f1.js"><link rel="prefetch" href="/assets/js/13.52d6ae10.js"><link rel="prefetch" href="/assets/js/14.039a3f68.js"><link rel="prefetch" href="/assets/js/15.c4544489.js"><link rel="prefetch" href="/assets/js/16.4397a0c3.js"><link rel="prefetch" href="/assets/js/17.5d360ea6.js"><link rel="prefetch" href="/assets/js/18.164933cb.js"><link rel="prefetch" href="/assets/js/19.3bbd3247.js"><link rel="prefetch" href="/assets/js/20.379af994.js"><link rel="prefetch" href="/assets/js/21.75026d2a.js"><link rel="prefetch" href="/assets/js/22.6de7f4b0.js"><link rel="prefetch" href="/assets/js/23.1c6d344a.js"><link rel="prefetch" href="/assets/js/24.4d48b2eb.js"><link rel="prefetch" href="/assets/js/25.9c1977c6.js"><link rel="prefetch" href="/assets/js/26.102666b4.js"><link rel="prefetch" href="/assets/js/27.94f46303.js"><link rel="prefetch" href="/assets/js/28.25a36f64.js"><link rel="prefetch" href="/assets/js/29.087c2cf0.js"><link rel="prefetch" href="/assets/js/3.205b9b76.js"><link rel="prefetch" href="/assets/js/30.2735cfd0.js"><link rel="prefetch" href="/assets/js/31.25202131.js"><link rel="prefetch" href="/assets/js/32.4dca4023.js"><link rel="prefetch" href="/assets/js/33.0333502b.js"><link rel="prefetch" href="/assets/js/34.736988f4.js"><link rel="prefetch" href="/assets/js/36.7d218f1b.js"><link rel="prefetch" href="/assets/js/37.dc0af1ad.js"><link rel="prefetch" href="/assets/js/38.6cc030f4.js"><link rel="prefetch" href="/assets/js/39.1a2dee84.js"><link rel="prefetch" href="/assets/js/4.d89202bc.js"><link rel="prefetch" href="/assets/js/40.433e9c2c.js"><link rel="prefetch" href="/assets/js/41.00a68d67.js"><link rel="prefetch" href="/assets/js/42.67967a14.js"><link rel="prefetch" href="/assets/js/5.0563125c.js"><link rel="prefetch" href="/assets/js/6.09d2fb02.js"><link rel="prefetch" href="/assets/js/7.42c872ff.js"><link rel="prefetch" href="/assets/js/8.eead966b.js"><link rel="prefetch" href="/assets/js/9.99349611.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9b2b34ec.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.jpg" alt="Mr Qiu's blog" class="logo"> <span class="site-name can-hide">Mr Qiu's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/pages/05012b/" class="nav-link">Python</a></div><div class="nav-item"><a href="/pages/3dc9eb/" class="nav-link">前端</a></div><div class="nav-item"><a href="/pages/29c828/" class="nav-link">数据库</a></div><div class="nav-item"><a href="/pages/c4ffa5/" class="nav-link">Linux</a></div><div class="nav-item"><a href="/pages/59618f/" class="nav-link">K8S</a></div> <a href="https://github.com/qiumozhou?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/pages/05012b/" class="nav-link">Python</a></div><div class="nav-item"><a href="/pages/3dc9eb/" class="nav-link">前端</a></div><div class="nav-item"><a href="/pages/29c828/" class="nav-link">数据库</a></div><div class="nav-item"><a href="/pages/c4ffa5/" class="nav-link">Linux</a></div><div class="nav-item"><a href="/pages/59618f/" class="nav-link">K8S</a></div> <a href="https://github.com/qiumozhou?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>环境</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Flask</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Celery</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>FastAPI</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ORM</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>自动化</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>socketio</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>邮件</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/fd86ac/" class="sidebar-link">POP3处理邮件</a></li><li><a href="/pages/6091d3/" aria-current="page" class="active sidebar-link">IMAP处理邮件</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-0c557b5e><div class="articleInfo" data-v-0c557b5e><ul class="breadcrumbs" data-v-0c557b5e><li data-v-0c557b5e><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-0c557b5e></a></li> <li data-v-0c557b5e><a href="/categories/?category=Python" title="分类" data-v-0c557b5e>Python</a></li><li data-v-0c557b5e><a href="/categories/?category=%E9%82%AE%E4%BB%B6" title="分类" data-v-0c557b5e>邮件</a></li></ul> <div class="info" data-v-0c557b5e><div title="作者" class="author iconfont icon-touxiang" data-v-0c557b5e><a href="https://github.com/qiumozhou/" target="_blank" title="作者" class="beLink" data-v-0c557b5e>qiumozhou</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-0c557b5e><a href="javascript:;" data-v-0c557b5e>2022-03-26</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">IMAP处理邮件<!----></h1>  <div class="theme-vdoing-content content__default"><h3 id="_01、拷贝代码"><a href="#_01、拷贝代码" class="header-anchor">#</a> 01、拷贝代码</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>'''
+@File :server.py
+@Date :2022/3/26
+@Author :QiuMozhou
+@MAIL  :15717163552@163.com
+'''
+import time
+import imaplib, email, os
+import datetime
+from email.header import decode_header
+# 添加缺失的命令
+imaplib.Commands['ID'] = ('AUTH')
+
+class IMAP_Downemail(object):
+    &quot;&quot;&quot;
+    &quot;&quot;&quot;
+    def __init__(self, account, pwd, serverurl, savedir, startdate, enddate, exts=['.xls', '.xlsx']):
+        &quot;&quot;&quot;
+        init
+        :param account:   邮箱账户
+        :param pwd:       密码
+        :param serverurl: 接收服务器地址
+        :param savedir:   文件保存路径
+        :param startdate: 邮件开始日期
+        :param enddate:   邮件结束日期
+        :param exts:      附件拓展名
+        &quot;&quot;&quot;
+        self._account = account
+        self._pwd = pwd
+        self._serverurl = serverurl
+        self._savedir = savedir
+        self._startdate = startdate
+        self._enddate = enddate
+        self._exts = exts
+
+    def __getEmailattachment(self, msg):
+        &quot;&quot;&quot;
+        下载邮件中的附件
+        &quot;&quot;&quot;
+        attachments = []
+        for part in msg.walk():
+            if part.get_content_maintype() == 'multipart':
+                continue
+            if part.get('Content-Disposition') is None:
+                continue
+            fileName = part.get_filename()
+
+            # 如果文件名为纯数字、字母时不需要解码，否则需要解码
+            try:
+                fileName = decode_header(fileName)[0][0].decode(decode_header(fileName)[0][1])
+            except:
+                pass
+
+            # 只获取指定拓展名的附件
+            extension = os.path.splitext(os.path.split(fileName)[1])[1]
+            if extension not in self._exts:
+                continue
+
+            # 如果获取到了文件，则将文件保存在指定的目录下
+            if fileName:
+                if not os.path.exists(self._savedir):
+                    os.makedirs(self._savedir)
+                filePath = os.path.join(self._savedir, fileName)
+                fp = open(filePath, 'wb')
+                fp.write(part.get_payload(decode=True))
+                fp.close()
+                attachments.append(fileName)
+
+        return attachments
+
+    def scanDown(self, process_fun=None):
+        if process_fun:
+            process_fun(&quot;当前邮箱：{}&quot;.format(self._account))
+
+        # 连接到qq企业邮箱，其他邮箱调整括号里的参数
+        conn = imaplib.IMAP4_SSL(self._serverurl, 993)
+
+        if process_fun:
+            process_fun(&quot;身份认证...&quot;)
+        try:
+            # 用户名、密码，登陆
+            conn.login(self._account, self._pwd)
+            login_success = True
+        except:
+            login_success = False
+
+        if login_success:
+            if process_fun:
+                process_fun(&quot;邮箱{}登录成功！&quot;.format(self._account))
+
+            # 选定一个邮件文件夹
+            # 收件箱默认名称是&quot;INBOX&quot;
+            # 可以用conn.list()查看都有哪些文件夹
+            print(conn.list())
+
+            args = (&quot;name&quot;, &quot;qmz&quot;, &quot;contact&quot;, &quot;15717163552@163.com&quot;, &quot;version&quot;, &quot;1.0.0&quot;, &quot;vendor&quot;, &quot;myclient&quot;)
+            conn._simple_command('ID', '(&quot;' + '&quot; &quot;'.join(args) + '&quot;)')
+
+            conn.select('INBOX')
+
+            # 提取文件夹中所有邮件的编号
+            resp, mails = conn.search(None, &quot;(UNSEEN)&quot;)
+
+            # 邮件编号列表
+            msgList = mails[0].split()
+
+            # 从最近的邮件开始获取
+            for i in reversed(range(len(msgList))):
+                try:
+                    resp, data = conn.fetch(msgList[i], '(RFC822)')
+                    emailbody = data[0][1]
+                    mail = email.message_from_bytes(emailbody)
+
+                    # 解析邮件日期
+                    try:
+                        mail_date = time.strptime(mail.get(&quot;Date&quot;)[0:24], '%a, %d %b %Y %H:%M:%S')  # 格式化收件时间
+                    except:
+                        mail_date = time.strptime(mail.get(&quot;Date&quot;), '%d %b %Y %H:%M:%S +0800')  # 格式化收件时间
+                    mail_date = time.strftime(&quot;%Y%m%d&quot;, mail_date)
+
+                    startdate = self._startdate
+                    stopdate = self._enddate
+
+                    if mail_date == (datetime.datetime.strptime(startdate, '%Y%m%d') - datetime.timedelta(days=1)).strftime('%Y%m%d'):
+                        break
+
+                    if mail_date == (datetime.datetime.strptime(startdate, '%Y%m%d') - datetime.timedelta(days=3)).strftime('%Y%m%d'):
+                        break
+
+                    if (mail_date &lt; startdate) | (mail_date &gt; stopdate):
+                        continue
+
+                    # 获取附件
+                    attachments = self.__getEmailattachment(mail)
+                    for attachment in attachments:
+                        if process_fun:
+                            process_fun(&quot;已下载文件：{}&quot;.format(attachment))
+                except:
+                    continue
+
+            conn.close()
+            conn.logout()
+        else:
+            if process_fun:
+                process_fun(&quot;邮箱{}登录失败！&quot;.format(self._account))
+
+if __name__ == '__main__':
+    def process_msg(msg):
+        print(msg)
+
+    # 邮箱账号列表
+    account_list = [
+        {
+            &quot;email&quot;: &quot;15717163552@163.com&quot;,  # 邮箱
+            &quot;password&quot;: &quot;12345&quot;,  # 授权密码
+            &quot;server&quot;: &quot;imap.163.com&quot;  # 服务器地址
+        }
+    ]
+
+    # 文件保存目录
+    _dir = r&quot;./test2&quot;
+
+    # 邮件开始日期和结束日期
+    startdate = &quot;20220129&quot;
+    enddate = &quot;20220429&quot;
+
+    # 下载
+    for account in account_list:
+        _email = account['email']
+        _password = account['password']
+        _server = account['server']
+        etool = IMAP_Downemail(_email, _password, _server, _dir, startdate, enddate)
+        etool.scanDown(process_msg)
+
+    print('Done.')
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br></div></div><h3 id="_02、运行服务"><a href="#_02、运行服务" class="header-anchor">#</a> 02、运行服务</h3> <p>执行<code>python main.py</code></p></div></div>  <div class="page-edit"><!----> <div class="tags"><a href="/tags/?tag=IMAP" title="标签">#IMAP</a></div> <!----></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/fd86ac/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">POP3处理邮件</div></a> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/fd86ac/" class="prev">POP3处理邮件</a></span> <!----></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="mailto:15717163552@163.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/qiumozhou/" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2022-2022
+    <span>Mr qiu | <a href="https://github.com/qiumozhou/" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6c83450c.js" defer></script><script src="/assets/js/2.377c5421.js" defer></script><script src="/assets/js/35.c4935256.js" defer></script>
+  </body>
+</html>

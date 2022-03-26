@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>POP3处理邮件 | Mr Qiu&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/img/logo.jpg">
+    <meta name="description" content="web前端技术博客,专注web前端学习与总结。JavaScript,js,ES6,TypeScript,vue,React,python,css3,html5,Node,git,github等技术文章。">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown">
+    <meta name="baidu-site-verification" content="7F55weZDDc">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/assets/css/0.styles.9b2b34ec.css" as="style"><link rel="preload" href="/assets/js/app.6c83450c.js" as="script"><link rel="preload" href="/assets/js/2.377c5421.js" as="script"><link rel="preload" href="/assets/js/34.736988f4.js" as="script"><link rel="prefetch" href="/assets/js/10.bfd3bcf5.js"><link rel="prefetch" href="/assets/js/11.6f5ff714.js"><link rel="prefetch" href="/assets/js/12.312dd1f1.js"><link rel="prefetch" href="/assets/js/13.52d6ae10.js"><link rel="prefetch" href="/assets/js/14.039a3f68.js"><link rel="prefetch" href="/assets/js/15.c4544489.js"><link rel="prefetch" href="/assets/js/16.4397a0c3.js"><link rel="prefetch" href="/assets/js/17.5d360ea6.js"><link rel="prefetch" href="/assets/js/18.164933cb.js"><link rel="prefetch" href="/assets/js/19.3bbd3247.js"><link rel="prefetch" href="/assets/js/20.379af994.js"><link rel="prefetch" href="/assets/js/21.75026d2a.js"><link rel="prefetch" href="/assets/js/22.6de7f4b0.js"><link rel="prefetch" href="/assets/js/23.1c6d344a.js"><link rel="prefetch" href="/assets/js/24.4d48b2eb.js"><link rel="prefetch" href="/assets/js/25.9c1977c6.js"><link rel="prefetch" href="/assets/js/26.102666b4.js"><link rel="prefetch" href="/assets/js/27.94f46303.js"><link rel="prefetch" href="/assets/js/28.25a36f64.js"><link rel="prefetch" href="/assets/js/29.087c2cf0.js"><link rel="prefetch" href="/assets/js/3.205b9b76.js"><link rel="prefetch" href="/assets/js/30.2735cfd0.js"><link rel="prefetch" href="/assets/js/31.25202131.js"><link rel="prefetch" href="/assets/js/32.4dca4023.js"><link rel="prefetch" href="/assets/js/33.0333502b.js"><link rel="prefetch" href="/assets/js/35.c4935256.js"><link rel="prefetch" href="/assets/js/36.7d218f1b.js"><link rel="prefetch" href="/assets/js/37.dc0af1ad.js"><link rel="prefetch" href="/assets/js/38.6cc030f4.js"><link rel="prefetch" href="/assets/js/39.1a2dee84.js"><link rel="prefetch" href="/assets/js/4.d89202bc.js"><link rel="prefetch" href="/assets/js/40.433e9c2c.js"><link rel="prefetch" href="/assets/js/41.00a68d67.js"><link rel="prefetch" href="/assets/js/42.67967a14.js"><link rel="prefetch" href="/assets/js/5.0563125c.js"><link rel="prefetch" href="/assets/js/6.09d2fb02.js"><link rel="prefetch" href="/assets/js/7.42c872ff.js"><link rel="prefetch" href="/assets/js/8.eead966b.js"><link rel="prefetch" href="/assets/js/9.99349611.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9b2b34ec.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.jpg" alt="Mr Qiu's blog" class="logo"> <span class="site-name can-hide">Mr Qiu's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/pages/05012b/" class="nav-link">Python</a></div><div class="nav-item"><a href="/pages/3dc9eb/" class="nav-link">前端</a></div><div class="nav-item"><a href="/pages/29c828/" class="nav-link">数据库</a></div><div class="nav-item"><a href="/pages/c4ffa5/" class="nav-link">Linux</a></div><div class="nav-item"><a href="/pages/59618f/" class="nav-link">K8S</a></div> <a href="https://github.com/qiumozhou?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/pages/05012b/" class="nav-link">Python</a></div><div class="nav-item"><a href="/pages/3dc9eb/" class="nav-link">前端</a></div><div class="nav-item"><a href="/pages/29c828/" class="nav-link">数据库</a></div><div class="nav-item"><a href="/pages/c4ffa5/" class="nav-link">Linux</a></div><div class="nav-item"><a href="/pages/59618f/" class="nav-link">K8S</a></div> <a href="https://github.com/qiumozhou?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>环境</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Flask</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Celery</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>FastAPI</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>ORM</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>自动化</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>socketio</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>邮件</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/fd86ac/" aria-current="page" class="active sidebar-link">POP3处理邮件</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/pages/6091d3/" class="sidebar-link">IMAP处理邮件</a></li></ul></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-0c557b5e><div class="articleInfo" data-v-0c557b5e><ul class="breadcrumbs" data-v-0c557b5e><li data-v-0c557b5e><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-0c557b5e></a></li> <li data-v-0c557b5e><a href="/categories/?category=Python" title="分类" data-v-0c557b5e>Python</a></li><li data-v-0c557b5e><a href="/categories/?category=%E9%82%AE%E4%BB%B6" title="分类" data-v-0c557b5e>邮件</a></li></ul> <div class="info" data-v-0c557b5e><div title="作者" class="author iconfont icon-touxiang" data-v-0c557b5e><a href="https://github.com/qiumozhou/" target="_blank" title="作者" class="beLink" data-v-0c557b5e>qiumozhou</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-0c557b5e><a href="javascript:;" data-v-0c557b5e>2022-03-26</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABGpJREFUSA3tVVtoXFUU3fvOI53UlmCaKIFmwEhsE7QK0ipFEdHEKpXaZGrp15SINsXUWvBDpBgQRKi0+KKoFeJHfZA+ED9KKoIU2gYD9UejTW4rVIzm0VSTziPzuNu1z507dibTTjL4U/DAzLn3nL3X2o91ziX6f9wMFdh6Jvbm9nNSV0msViVO6tN1Rm7NMu2OpeJ9lWBUTDxrJbYTS0hInuwciu9eLHlFxCLCZEk3MegsJmZ5K/JD6t7FkFdEvGUo1g7qJoG3MHImqRIn8/nzY1K9UPKKiJmtnUqHVE3Gbuay6vJE/N2FEmuxFjW2nUuE0yQXRRxLiTUAzs36zhZvOXJPdX850EVnnLZkB8prodQoM5JGj7Xk2mvC7JB8tG04Ef5PiXtG0UtxupRQSfTnBoCy554x18yJHI6I+G5Eru4LHmPJZEQsrvPUbMiA8G/WgMK7w7I+ez7++o2ANfbrjvaOl1tFMs+htG3IrZH9/hDX1Pr8Tc0UvH8tcX29KzAgIGcEkINyW5BF9x891hw6VYqgJHEk0huccS7vh3C6gTiODL+26huuBtbct8eZnqLML8PkxGYpuPZBqtqwkSjgc4mB5gbgig5i+y0UDK35LMxXisn9xQtK+nd26gTIHsHe/oblK/b29fUmN/8Y+9jAQrnBp56m1LcDlDp9irKTExSKduXJVWSqdBMA08pEJnEIOB3FPPMybu/oeV8zFeYN3xx576Q6RH+VmplE4ncQV5v+5rzSoyOU7PuEAg8g803PwBJ0CExno/jcMbN8tONYeOmHiuUNryvm3fRUy4tMPVLdAGkUhNWuggGrJcXPv+ouCjz0MKUHz1J2/E8IC9nqTabcxgaBYM0hPhD5Y65FsbxRQKxCQrDjDctW7PUM3HuZunFyifSAqEfuzCp48Il24luWUWZoyJCaPR82jE0+kFA643wRFVni4RYSq3ohJO2pZ7B5dO4xkDWbEpossJPLSrPjYID8rS2UHTlvyNxqIGsg674XJJ7vnh5L7PNwC4hh2sjCI96mzszOTpxLF0T7l88Yz7lAuK6OnL8gXLOnTvpzSb22YG8W7us3jSebFHeeqnXRG1vt+MoUM84LQIBmMsCTAcOauTh0T0l0neQK7m2bLMt2mGxU3HYssS0J2cdv5wljlPsrIuZLAG/2DOZIXgCYT8uMGZN+e2kSirfxZOPCsC0f24nTZzspnVn9VePS1Z5vubmAGGXG8ZFno9Hel0yfA5ZPhF7Dh972BQJ2qCpgH67lmWtBYbvk6sz02wjky2vXyz0XErP/kFB619js1BtwfOV4OPRqOQBjy3Qbk18vigUPPSD5ceHnwck7W9bhAqZdd7SuG7w4/P2F/GaJh8c7e9qgow+Q7cGBo+98WsLkuktFqiZabtXuQTu/Y5ETbR0v7tNSFnvrmu6pjdoan2KjMu8q/Hmj1EfCO2ZGfEIbIXKUlw8qaX9/b2oeSJmFksSeT/Fn0V3nSypChh4Gjh74ybO9aeZ/AN2dwciu2/MhAAAAAElFTkSuQmCC">POP3处理邮件<!----></h1>  <div class="theme-vdoing-content content__default"><h3 id="_01、拷贝代码"><a href="#_01、拷贝代码" class="header-anchor">#</a> 01、拷贝代码</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>'''
+@File :main.py
+@Date :2022/3/26
+@Author :QiuMozhou
+@MAIL  :15717163552@163.com
+'''
+# -*- coding: utf-8 -*-
+import poplib,email,telnetlib
+import datetime,time
+from email.parser import Parser
+from email.header import decode_header
+from email.utils import parseaddr
+
+
+class down_email():
+
+    def __init__(self,user,password,eamil_server):
+        # 输入邮件地址, 口令和POP3服务器地址:
+        self.user = user
+        # 此处密码是授权码,用于登录第三方邮件客户端
+        self.password = password
+        self.pop3_server = eamil_server
+
+    # 获得msg的编码
+    def guess_charset(self,msg):
+        charset = msg.get_charset()
+        if charset is None:
+            content_type = msg.get('Content-Type', '').lower()
+            pos = content_type.find('charset=')
+            if pos &gt;= 0:
+                charset = content_type[pos + 8:].strip()
+        return charset
+
+    #获取邮件内容
+    def get_content(self,msg):
+        content=''
+        content_type = msg.get_content_type()
+        # print('content_type:',content_type)
+        if content_type == 'text/plain': # or content_type == 'text/html'
+            content = msg.get_payload(decode=True)
+            charset = self.guess_charset(msg)
+            if charset:
+                content = content.decode(charset)
+        return content
+
+    # 字符编码转换
+    # @staticmethod
+    def decode_str(self,str_in):
+        value, charset = decode_header(str_in)[0]
+        if charset:
+            value = value.decode(charset)
+        return value
+
+    # 解析邮件,获取附件
+    def get_att(self,msg_in, str_day):
+        attachment_files = []
+        for part in msg_in.walk():
+            # 获取附件名称类型
+            file_name = part.get_param(&quot;name&quot;)  # 如果是附件，这里就会取出附件的文件名
+            # file_name = part.get_filename() #获取file_name的第2中方法
+            # contType = part.get_content_type()
+            if file_name:
+                h = email.header.Header(file_name)
+                # 对附件名称进行解码
+                dh = email.header.decode_header(h)
+                filename = dh[0][0]
+                if dh[0][1]:
+                    # 将附件名称可读化
+                    filename = self.decode_str(str(filename, dh[0][1]))
+                    # print(filename)
+                    # filename = filename.encode(&quot;utf-8&quot;)
+                # 下载附件
+                data = part.get_payload(decode=True)
+                # 在指定目录下创建文件，注意二进制文件需要用wb模式打开
+                att_file = open('./test/' + filename, 'wb')
+                att_file.write(data)  # 保存附件
+                att_file.close()
+                attachment_files.append(filename)
+            else:
+                # 不是附件，是文本内容
+                print(self.get_content(part))
+                # # 如果ture的话内容是没用的
+                # if not part.is_multipart():
+                #     # 解码出文本内容，直接输出来就可以了。
+                #     print(part.get_payload(decode=True).decode('utf-8'))
+
+        return attachment_files
+
+    def run_ing(self):
+        str_day = str(datetime.date.today())# 日期赋值
+        # 连接到POP3服务器,有些邮箱服务器需要ssl加密，可以使用poplib.POP3_SSL
+        try:
+            telnetlib.Telnet(self.pop3_server, 995)
+            self.server = poplib.POP3_SSL(self.pop3_server, 995, timeout=10)
+        except:
+            time.sleep(5)
+            self.server = poplib.POP3(self.pop3_server, 110, timeout=10)
+
+        # server.set_debuglevel(1) # 可以打开或关闭调试信息
+        # 打印POP3服务器的欢迎文字:
+        print(self.server.getwelcome().decode('utf-8'))
+        # 身份认证:
+        self.server.user(self.user)
+        self.server.pass_(self.password)
+        # 返回邮件数量和占用空间:
+        print(&quot;**********&quot;,dir(self.server))
+        print('Messages: %s. Size: %s' % self.server.stat())
+
+        # list()返回所有邮件的编号:
+        while True:
+            time.sleep(5)
+            self.server.noop()
+            resp, mails, octets = self.server.list()
+            # 可以查看返回的列表类似[b'1 82923', b'2 2184', ...]
+            print(mails)
+            index = len(mails)
+            for i in range(index, index-1, -1):# 倒序遍历邮件
+            # for i in range(1, index + 1):# 顺序遍历邮件
+                resp, lines, octets = self.server.retr(i)
+                # lines存储了邮件的原始文本的每一行,
+                # 邮件的原始文本:
+                msg_content = b'\r\n'.join(lines).decode('utf-8')
+                # 解析邮件:
+                msg = Parser().parsestr(msg_content)
+                #获取邮件的发件人，收件人， 抄送人,主题
+                # hdr, addr = parseaddr(msg.get('From'))
+                # From = self.decode_str(hdr)
+                # hdr, addr = parseaddr(msg.get('To'))
+                # To = self.decode_str(hdr)
+                # 方法2：from or Form均可
+                From = parseaddr(msg.get('from'))[1]
+                To = parseaddr(msg.get('To'))[1]
+                Cc=parseaddr(msg.get_all('Cc'))[1]# 抄送人
+                #邮件名称
+                Subject = self.decode_str(msg.get('Subject'))
+                print('from:%s,to:%s,Cc:%s,subject:%s'%(From,To,Cc,Subject))
+                # 获取邮件时间,格式化收件时间
+                date1 = time.strptime(msg.get(&quot;Date&quot;)[0:24], '%a, %d %b %Y %H:%M:%S')
+
+                # 邮件时间格式转换
+                date2 = time.strftime(&quot;%Y-%m-%d %H:%M:%S&quot;,date1)
+                print(&quot;邮件时间:&quot; + date2)
+                if date2 &lt; str_day:
+                    break # 倒叙用break
+                    # continue # 顺叙用continue
+                else:
+                    # 获取附件
+                    attach_file=self.get_att(msg,str_day)
+                    print(attach_file)
+
+            # 可以根据邮件索引号直接从服务器删除邮件:
+            # self.server.dele(7)
+
+
+
+if __name__ == '__main__':
+    #把打印内容输出到文件
+    try:
+        # 输入邮件地址, 口令和POP3服务器地址:
+        user = '15717163552@163.com'
+        # 此处密码是授权码,用于登录第三方邮件客户端
+        password = '12314'
+        eamil_server = 'pop.163.com'
+        email_class=down_email(user=user,password=password,eamil_server=eamil_server)
+        email_class.run_ing()
+    except Exception as e:
+        import traceback
+        ex_msg = '{exception}'.format(exception=traceback.format_exc())
+        print(ex_msg)
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br></div></div><h3 id="_02、运行服务"><a href="#_02、运行服务" class="header-anchor">#</a> 02、运行服务</h3> <p>执行<code>python main.py</code></p></div></div>  <div class="page-edit"><!----> <div class="tags"><a href="/tags/?tag=POP3" title="标签">#POP3</a></div> <!----></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/a4bbe3/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">利用socketio-python搭建服务</div></a> <a href="/pages/6091d3/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">IMAP处理邮件</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/a4bbe3/" class="prev">利用socketio-python搭建服务</a></span> <span class="next"><a href="/pages/6091d3/">IMAP处理邮件</a>→
+      </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="mailto:15717163552@163.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/qiumozhou/" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2022-2022
+    <span>Mr qiu | <a href="https://github.com/qiumozhou/" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6c83450c.js" defer></script><script src="/assets/js/2.377c5421.js" defer></script><script src="/assets/js/34.736988f4.js" defer></script>
+  </body>
+</html>
