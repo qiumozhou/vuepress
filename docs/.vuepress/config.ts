@@ -123,9 +123,10 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 
     // 页脚信息
     footer: {
+
       createYear: 2022, // 博客创建年份
       copyrightInfo:
-        'Mr qiu | <a href="https://github.com/qiumozhou/" target="_blank">MIT License</a>', // 博客版权信息，支持a标签或换行标签</br>
+        '鄂ICP备2022003077号 | Mr qiu | <a href="https://github.com/qiumozhou/" target="_blank">MIT License</a>', // 博客版权信息，支持a标签或换行标签</br>
     },
 
     // 自定义hmtl(广告)模块
