@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ORM基础Model | Mr Qiu&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/img/logo.jpg">
+    <meta name="description" content="web前端技术博客,专注web前端学习与总结。JavaScript,js,ES6,TypeScript,vue,React,python,css3,html5,Node,git,github等技术文章。">
+    <meta name="keywords" content="前端博客,个人技术博客,前端,前端开发,前端框架,web前端,前端面试题,技术文档,学习,面试,JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown">
+    <meta name="baidu-site-verification" content="7F55weZDDc">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/assets/css/0.styles.9e2e35af.css" as="style"><link rel="preload" href="/assets/js/app.f4cfd259.js" as="script"><link rel="preload" href="/assets/js/2.5a38dee8.js" as="script"><link rel="preload" href="/assets/js/56.d6fddcc2.js" as="script"><link rel="prefetch" href="/assets/js/10.537c4e75.js"><link rel="prefetch" href="/assets/js/11.80fcbfcd.js"><link rel="prefetch" href="/assets/js/12.86f0e19a.js"><link rel="prefetch" href="/assets/js/13.efd2e882.js"><link rel="prefetch" href="/assets/js/14.5ba72e13.js"><link rel="prefetch" href="/assets/js/15.dbd998ea.js"><link rel="prefetch" href="/assets/js/16.298e9ec5.js"><link rel="prefetch" href="/assets/js/17.1216f465.js"><link rel="prefetch" href="/assets/js/18.1d915d11.js"><link rel="prefetch" href="/assets/js/19.db14f07b.js"><link rel="prefetch" href="/assets/js/20.a8cd70e7.js"><link rel="prefetch" href="/assets/js/21.494bc38d.js"><link rel="prefetch" href="/assets/js/22.8dd7ac9d.js"><link rel="prefetch" href="/assets/js/23.12edc701.js"><link rel="prefetch" href="/assets/js/24.7a878931.js"><link rel="prefetch" href="/assets/js/25.9c8db6c0.js"><link rel="prefetch" href="/assets/js/26.741118ab.js"><link rel="prefetch" href="/assets/js/27.619ffeba.js"><link rel="prefetch" href="/assets/js/28.dfdbd55d.js"><link rel="prefetch" href="/assets/js/29.bc44c6c3.js"><link rel="prefetch" href="/assets/js/3.f44d4297.js"><link rel="prefetch" href="/assets/js/30.bbb2e95b.js"><link rel="prefetch" href="/assets/js/31.0368b3c8.js"><link rel="prefetch" href="/assets/js/32.e970d3e6.js"><link rel="prefetch" href="/assets/js/33.4a3e0185.js"><link rel="prefetch" href="/assets/js/34.bdb8fdea.js"><link rel="prefetch" href="/assets/js/35.ba11f9cf.js"><link rel="prefetch" href="/assets/js/36.05cbea6c.js"><link rel="prefetch" href="/assets/js/37.261b3a63.js"><link rel="prefetch" href="/assets/js/38.4d64e04b.js"><link rel="prefetch" href="/assets/js/39.85fba3d8.js"><link rel="prefetch" href="/assets/js/4.9e38c585.js"><link rel="prefetch" href="/assets/js/40.330eebc9.js"><link rel="prefetch" href="/assets/js/41.fa01ecf6.js"><link rel="prefetch" href="/assets/js/42.e2e5fc2d.js"><link rel="prefetch" href="/assets/js/43.5936c27c.js"><link rel="prefetch" href="/assets/js/44.d6b2f7ed.js"><link rel="prefetch" href="/assets/js/45.f57bab75.js"><link rel="prefetch" href="/assets/js/46.95bed6ac.js"><link rel="prefetch" href="/assets/js/47.d5e94402.js"><link rel="prefetch" href="/assets/js/48.0e166ab9.js"><link rel="prefetch" href="/assets/js/49.f1b6f7b9.js"><link rel="prefetch" href="/assets/js/5.b77a029a.js"><link rel="prefetch" href="/assets/js/50.61ed480f.js"><link rel="prefetch" href="/assets/js/51.9701a850.js"><link rel="prefetch" href="/assets/js/52.32796fed.js"><link rel="prefetch" href="/assets/js/53.35e1ae6a.js"><link rel="prefetch" href="/assets/js/54.e3258e44.js"><link rel="prefetch" href="/assets/js/55.752ccd3e.js"><link rel="prefetch" href="/assets/js/57.faec79d0.js"><link rel="prefetch" href="/assets/js/58.bc6b11bb.js"><link rel="prefetch" href="/assets/js/59.969bc2eb.js"><link rel="prefetch" href="/assets/js/6.bb70cf08.js"><link rel="prefetch" href="/assets/js/60.fe9891ea.js"><link rel="prefetch" href="/assets/js/61.bae9fb64.js"><link rel="prefetch" href="/assets/js/62.26f1f013.js"><link rel="prefetch" href="/assets/js/63.3ad3a371.js"><link rel="prefetch" href="/assets/js/64.ad200d26.js"><link rel="prefetch" href="/assets/js/65.a9e1c95d.js"><link rel="prefetch" href="/assets/js/66.fc161cce.js"><link rel="prefetch" href="/assets/js/67.55a28964.js"><link rel="prefetch" href="/assets/js/68.b5e7a4f9.js"><link rel="prefetch" href="/assets/js/69.f9f6a873.js"><link rel="prefetch" href="/assets/js/7.18409c6c.js"><link rel="prefetch" href="/assets/js/70.e4ce7e34.js"><link rel="prefetch" href="/assets/js/71.d745676a.js"><link rel="prefetch" href="/assets/js/72.dce9ed2b.js"><link rel="prefetch" href="/assets/js/73.13c03267.js"><link rel="prefetch" href="/assets/js/74.31a33167.js"><link rel="prefetch" href="/assets/js/75.375e7f72.js"><link rel="prefetch" href="/assets/js/76.2ce2e9ef.js"><link rel="prefetch" href="/assets/js/77.a189523c.js"><link rel="prefetch" href="/assets/js/78.07e48fe3.js"><link rel="prefetch" href="/assets/js/79.4c45c33a.js"><link rel="prefetch" href="/assets/js/8.ef592bc1.js"><link rel="prefetch" href="/assets/js/80.f79f2790.js"><link rel="prefetch" href="/assets/js/81.be53c842.js"><link rel="prefetch" href="/assets/js/82.a9e1afec.js"><link rel="prefetch" href="/assets/js/83.00b812a8.js"><link rel="prefetch" href="/assets/js/84.611f56b6.js"><link rel="prefetch" href="/assets/js/85.89d7583e.js"><link rel="prefetch" href="/assets/js/86.b03cf991.js"><link rel="prefetch" href="/assets/js/87.eb1ecfaa.js"><link rel="prefetch" href="/assets/js/88.aec3cd73.js"><link rel="prefetch" href="/assets/js/89.130ad0d7.js"><link rel="prefetch" href="/assets/js/9.3c39a39f.js"><link rel="prefetch" href="/assets/js/90.c51ec8ae.js"><link rel="prefetch" href="/assets/js/91.55c8f5cd.js"><link rel="prefetch" href="/assets/js/92.0cd16443.js"><link rel="prefetch" href="/assets/js/93.1e37a37e.js"><link rel="prefetch" href="/assets/js/94.08865dcf.js"><link rel="prefetch" href="/assets/js/95.b00b0760.js"><link rel="prefetch" href="/assets/js/96.51510eb5.js"><link rel="prefetch" href="/assets/js/97.5f021251.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9e2e35af.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo.jpg" alt="Mr Qiu's blog" class="logo"> <span class="site-name can-hide">Mr Qiu's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/pages/05012b/" class="nav-link">Python</a></div><div class="nav-item"><a href="/pages/3dc9eb/" class="nav-link">前端</a></div><div class="nav-item"><a href="/pages/29c828/" class="nav-link">数据库</a></div><div class="nav-item"><a href="/pages/c4ffa5/" class="nav-link">Linux</a></div><div class="nav-item"><a href="/pages/59618f/" class="nav-link">K8S</a></div> <a href="https://github.com/qiumozhou?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><!----> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><a href="/pages/05012b/" class="nav-link">Python</a></div><div class="nav-item"><a href="/pages/3dc9eb/" class="nav-link">前端</a></div><div class="nav-item"><a href="/pages/29c828/" class="nav-link">数据库</a></div><div class="nav-item"><a href="/pages/c4ffa5/" class="nav-link">Linux</a></div><div class="nav-item"><a href="/pages/59618f/" class="nav-link">K8S</a></div> <a href="https://github.com/qiumozhou?tab=repositories" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>环境</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Flask</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Celery</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>FastAPI</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>ORM</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/dd476f/" class="sidebar-link">SQLAlchemy的使用</a></li><li><a href="/pages/d8ea6c/" class="sidebar-link">ORM实现upsert操作</a></li><li><a href="/pages/0e4801/" class="sidebar-link">创建模型类</a></li><li><a href="/pages/27ea06/" class="sidebar-link">创建一对多关系</a></li><li><a href="/pages/b9723e/" class="sidebar-link">创建多对多关系</a></li><li><a href="/pages/29ddd9/" class="sidebar-link">模型对象序列化</a></li><li><a href="/pages/aedd19/" class="sidebar-link">python实现ORM</a></li><li><a href="/pages/b6e7e2/" aria-current="page" class="active sidebar-link">ORM基础Model</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>自动化</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>socketio</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>邮件</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>日志</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>多任务</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>异步编程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>设计模式</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>测试</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>数据结构及算法</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>消息队列</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-06225672><div class="articleInfo" data-v-06225672><ul class="breadcrumbs" data-v-06225672><li data-v-06225672><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-06225672></a></li> <li data-v-06225672><a href="/categories/?category=Python" title="分类" data-v-06225672>Python</a></li><li data-v-06225672><a href="/categories/?category=ORM" title="分类" data-v-06225672>ORM</a></li></ul> <div class="info" data-v-06225672><div title="作者" class="author iconfont icon-touxiang" data-v-06225672><a href="https://github.com/qiumozhou/" target="_blank" title="作者" class="beLink" data-v-06225672>qiumozhou</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-06225672><a href="javascript:;" data-v-06225672>2022-09-21</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABKFJREFUSA3tVl1oFVcQnrMbrak3QUgkya1akpJYcrUtIqW1JvFBE9LiQ5v6JmJpolbMg32rVrhgoYK0QiMY6i9Y6EMaW5D+xFJaTYItIuK2Kr3+BJNwkxBj05sQY3b3nM6cs2dv9t7NT/vQJw/sndk5M/PNzJkzewGerP+pAmy+ON8lLzUJgA8ZYxYIYZmGYRnctDaWvJJAmTtfP1pvXsBCCPP8QFcCaRkZYACgDZFO4stNIcBCajEOlmmC9XpJ9bAGCaPaPmzPl32dvLSVu3BWCTQs0XQQ6g0DYgwLIoAZbBCdW/i+781o1VVlm/410mw4h06Y7bIPHNyWDyL4FHkX03Q8SrzNhZTZriieckWt7cL6MM85YcLpsi/7O9/iXFT6MswI0DmmpkSaJ0qLxFIm3+i1THHB3zmBH3PYx9CcykcLOeQVVa7QtdxTgQgEleX2AjHYfwA+2ddV77ruGoJUbhGDI09YSNXyMpUt5ylOzxgbUmtOp7NmbNt8v3arjTBfYELmLUV+M+nSawNNAUqpT3ClJWg5I3BLT+cGW/DXNGCa6tx1aakCGEigArTn4TDIPdrXXYKCZNrHLMCOEPvHBlLQ99s9eHB7EB6NTki73CVPQ2F5MSx/uRQixfmq7rK0wYD8w8E905bnPDfwoWs/rfv93NWN/ZfvwsLIU7A09gxECyISeGJkHAau98L97tuw7NXnoPyNF8FcYGLGKsOs0mN3OEyec9esGW/ZEl945dTP34wlR2FZVQWU1q0Cw8Tr7p+hgLLNL0FPxx/Q35mA8aEUrH6nCgwEl0tn7wUiZYJnNRh6DK4UH/k0lfyrsBKdPVv/AriGIQcEDQZ65LBAGe2Rzui9Ybjz7XUppz1/uKBbyVPGkN3ZAeC6hr0x7Nr38N5+EqkoOm17xpoqR9ohQF55ERSvr4Dkr3chNfC3DMzGJlNBElW8w9nsGQvhNGIzDkXzCg8cLK951xHsFBlTJspJNi3ZFIMF2AeDV3q8DNOB+YHi6QTrChDIWDBRi5U5f+ZMfJLu3ccrqxtdxk4SKH336LFxSmkqefwU5T8fhdSdQf9IVKD6aNiwI/hnmcAZ91isYMJIaCUCx9W098+LgruikeTqzqqxKPUwqJyCPJiyemVVZBOijDGjD38Os0jOiSPL1z3SPjXNANbiNPXAdzTfukjjuknNBbyz3nwgTd3AVFqUJ5hpHlq9MveLnWwttUfoygBmvVjuikxND3znrhsELnZk7k+OjIGxeNEkomyLVta0xxn+HZhjBc4YZ/AFjHjz9u3xRZl2BN4aq9nFwWh16IrQ1aHHEd3j1+4/dB9OtH4e29A2H1DyHQRmOSfQZ1Fy7MHBTGB6J/Djq6p3OxyO2cB+4Car7v/o3GXgfAkj23+x9ID1Teoamo/SXcbvSf2PX7Vc8DdCmE1vN9di+32P9/5YR3vLnhCVGUWBjEkr3yh4H8v9CzmsbdhzOKzsJKM90iFdaTMjRPhGVsakRvOaRidljo6H6G7j+ctrJpsP+4COhDIl0La2+FS4+5mlocBaXY5QnGZysIBYoeSsl5qQzrSj/cgNrfuEzlWBfwA+EjrZyWUvpAAAAABJRU5ErkJggg==">ORM基础Model<!----></h1>  <div class="theme-vdoing-content content__default"><p>前言：该基类实现了基本的增删改查,包含过滤、分页等功能。其他模型类继承该基类即可。如果需要连表查询,可
+重写方法。</p> <h3 id="_01、代码实现"><a href="#_01、代码实现" class="header-anchor">#</a> 01、代码实现</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code># -*- ecoding: utf-8 -*-
+# @ModuleName: baseModel
+# @Mail: 15717163552@163.com
+# @Author: mozhouqiu
+# @Time: 2022/9/21 19:56
+from sqlalchemy import desc, asc
+from sqlalchemy_serializer import SerializerMixin
+from sqlalchemy.orm import sessionmaker, scoped_session
+from sqlalchemy import create_engine
+
+# 建立数据库连接实例
+engine = create_engine(
+        &quot;mysql+pymysql://root:123456@127.0.0.1:3306/demo?charset=utf8&quot;,
+        max_overflow=0,  # 超过连接池大小外最多创建的连接
+        pool_size=5,  # 连接池大小
+        pool_timeout=30,  # 池中没有线程最多等待的时间，否则报错
+        pool_recycle=-1  # 多久之后对线程池中的线程进行一次连接的回收（重置）
+    )
+
+obj_session = sessionmaker(bind=engine)
+# 使用scoped_session,防止线程不安全
+dBSession = scoped_session(obj_session)
+
+
+class BaseModel(SerializerMixin):
+
+    @staticmethod
+    def getList(cls_,filters,order,field,offset,limit):
+        &quot;&quot;&quot;
+        列表
+        @param object cls_ 数据库模型实体类
+        @param set filters 查询条件
+        @param str order 排序    &quot;id desc&quot;
+        @param tuple field 字段
+        @param int offset 偏移量
+        @param int limit 取多少条
+        @return dict
+        &quot;&quot;&quot;
+        result={}
+        result['count'] = dBSession.query(cls_).filter_by(**filters).count()
+        if result['count'] &gt; 0:
+            res = dBSession.query(cls_).filter_by(**filters)
+            for item in order:
+                orderItem = item.split(',')
+                if orderItem[1].upper() == 'DESC':
+                    res= res.order_by(desc(orderItem[0]))
+                else:
+                    res = res.order_by(asc(orderItem[0]))
+            res = res.offset(offset).limit(limit).all()
+        if not field:
+            result['list'] = [c.to_dict() for c in res]
+        else:
+            result['list'] = [c.to_dict(only=field) for c in res]
+        return result
+
+    @staticmethod
+    def getAll(cls_,filters,order,field):
+        &quot;&quot;&quot;
+        查询全部
+        @param object cls_ 数据库模型实体类
+        @param set filters 查询条件  {&quot;id&quot;:1}
+        @param str order 排序
+        @param tuple field 字段  (&quot;id&quot;,&quot;name&quot;)
+        @return dict
+        &quot;&quot;&quot;
+        result = {}
+        if not filters:
+            res = dBSession.query(cls_)
+        else:
+            res = dBSession.query(cls_).filter_by(**filters)
+        result[&quot;count&quot;] = res.count()
+        for _ in order:
+            orderArr = _.split(',')
+            if orderArr[1] == 'desc':
+                res = res.order_by(desc(orderArr[0]))
+            else:
+                res = res.order_by(asc(orderArr[0]))
+        res = res.all()
+        if not field:
+            result[&quot;data&quot;] = [c.to_dict() for c in res]
+        else:
+            result[&quot;data&quot;] = [c.to_dict(only=field) for c in res]
+        return result
+
+    @staticmethod
+    def getOne(cls_,filters,field):
+        &quot;&quot;&quot;
+        获取一条
+        @param object cls_ 数据库模型实体类
+        @param set filters 查询条件
+        @param tuple field 字段
+        @return dict
+        &quot;&quot;&quot;
+        res = dBSession.query(cls_).filter_by(**filters).first()
+        if res == None:
+            return None
+        if not field:
+            res = res.to_dict()
+        else:
+            res = res.to_dict(only=field)
+        return res
+
+    @staticmethod
+    def add(cls_,data):
+        &quot;&quot;&quot;
+        添加
+        @param object cls_ 数据库模型实体类
+        @param dict data 数据
+        @return bool
+        &quot;&quot;&quot;
+        users = cls_(**data)
+        dBSession.add(users)
+        dBSession.commit()
+        return users.to_dict()
+
+    @staticmethod
+    def edit( cls_,data,filters):
+        &quot;&quot;&quot;
+        修改
+        @param object cls_ 数据库模型实体类
+        @param dict data 数据
+        @param set filters 条件
+        &quot;&quot;&quot;
+        re = dBSession.query(cls_).filter_by(**filters).update(data, synchronize_session=False)
+        if re:
+            return BaseModel.getOne(cls_,filters=filters,field=())
+        return None
+
+    @staticmethod
+    def delete(cls_,filters):
+        &quot;&quot;&quot;
+        删除
+        @param object cls_ 数据库模型实体类
+        @param set filters 条件
+        @return int
+        &quot;&quot;&quot;
+        re = dBSession.query(cls_).filter_by(**filters).delete(synchronize_session=False)
+        if re:
+            return BaseModel.getOne(cls_, filters=filters, field=())
+        return None
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br></div></div></div></div>  <div class="page-edit"><!----> <div class="tags"><a href="/tags/?tag=ORM" title="标签">#ORM</a></div> <!----></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/aedd19/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">python实现ORM</div></a> <a href="/pages/be3bd6/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">openpyxl的使用</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/aedd19/" class="prev">python实现ORM</a></span> <span class="next"><a href="/pages/be3bd6/">openpyxl的使用</a>→
+      </span></p></div></div></div> <!----></main></div> <div class="footer"><div class="icons"><a href="mailto:15717163552@163.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/qiumozhou/" title="GitHub" target="_blank" class="iconfont icon-github"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2022-2022
+    <span>鄂ICP备2022003077号 | Mr qiu | <a href="https://github.com/qiumozhou/" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <!----> <!----> <!----></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.f4cfd259.js" defer></script><script src="/assets/js/2.5a38dee8.js" defer></script><script src="/assets/js/56.d6fddcc2.js" defer></script>
+  </body>
+</html>
