@@ -19,5 +19,8 @@ module.exports = [
   {
     text: 'K8S',
     link: '/pages/59618f/',
+  },{
+    text: '微服务',
+    link: '/pages/4c4e4c/',
   },
 ]
